@@ -14,3 +14,8 @@ NaN          // falsy
 
 
   
+
+Undeclared variables in Javascript have global scope; they ignore bock and function scope entirely.
+
+
+All JavaScript function calls by default, evaluate to undefined. In Ruby the last line in a method is the return value.
