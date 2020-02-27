@@ -28,6 +28,20 @@ Hashes in Ruby are called Objects in JavaScript.
 Objects in Javascript are a collection of key-value pairs where the keys are strings and the values can be any type.
 In Ruby, hashes can have keys of any class as well as values.
 
+In Ruby, to access a specific value in a hash you can use bracket notation like this: 
+person = { name: 'Jane'} 
+person[:name]
+In Javascript, you can use bracket notation OR you can use dot notation like this: person.name.
+In Ruby you cant use dot notation.
+
+In Javascript, when working with objects, JavaScript will coerce a non-string key to a string. If you use 1 and '1' as key values, they represent the same key. Example:
+> let myObj = {}
+> myObj[1] = 'hello'
+> myObj['1'] = 'world'
+> myObj[1]
+= 'world'
+In Ruby, hashes can have any class as a key and wont coerce the key you put into anything else.
+
 
 In JavaScript you can't assign a variable to the result of an if/else statement. In Ruby you can. (verify this).'
 
@@ -73,3 +87,41 @@ Examples in Javascript:
 
 
 In Ruby, the Array#reverse method is non-destrcutive. In Javascript, the Array#reverse method is destructive (it mutates the array)
+
+
+In Ruby, if you assign a variable to a method like this:
+def startle
+  puts "Yikes!"
+end
+surprise = startle
+The variable is assigned to the return value of the function. 
+In JavaScript, function names are nothing special, they are just local variables that happen to have a function as a value. Since startle is just a local variable, we can assign it to a new local variable and call the function using that new name:
+var surprise = startle;
+surprise();
+//logs:
+Yikes!
+
+
+In JavaScript, calling a function with too few arguments does not raise an error. (You can also pass more arguments to a function than it expects and it will not raise an error).
+In Ruby, calling a function with too few arguments raises a NoMethod Error
+Example:
+function takeTwo(a, b) {
+  console.log(a);
+  console.log(b);
+  console.log(a + b);
+}
+
+takeTwo(1) does not raise an error
+
+def taketwo(a, b)
+  puts a
+  puts b
+  puts a + b
+end
+
+taketwo(1) will raises a NoMethod Error
+
+(Since Javascript allows this through, within a function, an argument that wasnt provided in the call will have the value undefined.)
+
+
+
