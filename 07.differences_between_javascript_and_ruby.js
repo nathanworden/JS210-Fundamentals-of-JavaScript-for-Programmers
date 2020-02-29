@@ -125,3 +125,64 @@ taketwo(1) will raises a NoMethod Error
 
 
 
+
+
+JavaScript hoists variable declarations, which means that it processes variable declarations before it executes any code within the scope. Declaring a variable anywhere in a scope is equivalent to declaring it at the top of the scope. 
+In Ruby variable declaration and variable assignment happen at the same time. So Ruby does not hoist variable declaration or assignment.
+
+
+Example of Javascrpt hoisting:
+This code:
+console.log(a);
+var a = 123;
+varb = 456;
+
+Is equivalent to:
+var a;
+var b;
+console.log(a);
+a = 123;
+b = 456;
+
+
+
+JavaScript also hoists function declarations to the top of the scope; it hoists the entire function declaration, including the body:
+console.log(hello());
+function hello() {
+  return 'hello world';
+}
+
+Is equivalent to:
+function hello() {
+  return 'hello world';
+}
+console.log(hello());
+
+
+
+
+When both a variable and a function declaration exist, the function declaration is hoisted first (located above the variable declaration).
+Given the following code block:
+bar();              // logs undefined
+var foo = 'hello';
+
+function bar() {
+  console.log(foo);
+}
+
+The equivalent hoisted code would look like this:
+function bar() {
+  console.log(foo);
+}
+
+var foo;
+
+bar();          // logs undefined
+foo = 'hello';
+
+Given the hoisted code, the key thing to watch out for is the value that is logged. For this particular scenario, since bar uses a variable that is in the global scope, the timing of the assignment becomes relevant. It is easy to make a mistake and think that since bar was declared below the assignment of 'hello' to foo (see code before hoisting) that when bar is invoked the value logged will be 'hello' already. However, because of the hoisting rules for variable and function declaration foo is still undefined when bar is invoked.
+
+
+
+
+

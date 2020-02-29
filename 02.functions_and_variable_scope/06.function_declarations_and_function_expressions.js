@@ -43,6 +43,71 @@
 //////////////////////////////////////////////
 
 
+// var hello = function () {
+//   return 'hello';
+// };
+
+// console.log(typeof hello);
+// console.log(hello());
+
+
+//////////////////////////////////////////////
+
+// var foo = function () {
+//   return function () {
+//     return 1;
+//   };
+// };
+
+// var bar = foo();
+// console.log(bar());
+
+
+////////////////////////////////////////////
+
+// var hello = function foo() {
+//   console.log(typeof foo);
+// };
+
+// hello();
+
+// foo();
+
+////////////////////////////////////////////
+
+
+// function foo() {
+//   console.log('function declaration');
+// }
+
+// (function bar() {
+//   console.log('function expression');
+// })
+
+
+// foo();
+
+
+////////////////////////////////////////////
+
+
+var foo = function foo() {
+  return 'a named function expression assigned to a variable';
+};
+
+function bar() {
+  return 'a function declaration';
+}
+
+
+console.log(foo);
+
+console.log(bar());
+
+
+
+
+
 
 
 
