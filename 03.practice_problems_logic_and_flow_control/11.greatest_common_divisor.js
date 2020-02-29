@@ -87,7 +87,13 @@
 
 
 function multipleGcd(arr) {
-  arr.reduce ((acc, ele) => )
+  var current = arr[0];
+
+  for (var i = 1; i < arr.length; i += 1) {
+    current = gcd(current, arr[i])
+  }
+
+  return current
 }
 
 function gcd(num1, num2) {
@@ -103,7 +109,7 @@ function gcd(num1, num2) {
 }
 
 
-
+console.log(multipleGcd([16, 8, 32, 40, 98]));
 
 
 
