@@ -1,0 +1,3 @@
+function indexOf(arr, value) {
+  
+}
