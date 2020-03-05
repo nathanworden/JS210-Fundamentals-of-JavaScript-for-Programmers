@@ -86,7 +86,7 @@ Examples in Javascript:
 (In ruby, fruits.slice() throws an error.)
 
 
-In Ruby, the Array#reverse method is non-destrcutive. In Javascript, the Array#reverse method is destructive (it mutates the array)
+In Ruby, the Array#reverse method is non-destrcutive. In Javascript, the Array#reverse method is destructive (it mutates the array). In Javascript the Array.prototype.reverse method cannot be called on a string. Only an array. There is no string.reverse method apparently.
 
 
 In Ruby, if you assign a variable to a method like this:
@@ -181,6 +181,41 @@ bar();          // logs undefined
 foo = 'hello';
 
 Given the hoisted code, the key thing to watch out for is the value that is logged. For this particular scenario, since bar uses a variable that is in the global scope, the timing of the assignment becomes relevant. It is easy to make a mistake and think that since bar was declared below the assignment of 'hello' to foo (see code before hoisting) that when bar is invoked the value logged will be 'hello' already. However, because of the hoisting rules for variable and function declaration foo is still undefined when bar is invoked.
+
+
+
+
+
+
+In JavaScript, arithmetic operators convert arrays to strings before performing the operation.
+In Ruby, arthmetic operators are methods, and have specific functions for Arrays.
+
+Javascript:
+var initials = ['A', 'H', 'E'];
+initials + 'B';                   // "A,H,EB"
+initials;                         // [ "A", "H", "E" ]
+
+Ruby:
+initials = ['A', 'H', 'E'];
+initials + 'B';  // Error
+
+Javascript:
+var initials = ['A', 'H', 'E']
+initials + ['B', 'C']         // 'A,H,EB,C'
+
+Ruby 
+initials = ['A', 'H', 'E']
+initials + ['B', 'C']           // ['A', 'H', 'E', 'B', 'C']
+
+
+
+In Javascript, The relational comparison operators, >, >=, <, and <=, are useless with arrays and objects. They return true or false in unexpected ways. Dont use them with arrays or objects.
+
+
+
+In Javascript Arrays are objects, which means they have more properties than just the indexed order of elements. You can add an element to a negative index that the array will remember, but not include as one of the propert array elements. Also, the array.length property will remain unchanced when you add elements at negative indexes.
+In Ruby, a negative index counts back from the end of the array.
+
 
 
 
