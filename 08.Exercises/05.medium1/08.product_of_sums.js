@@ -1,0 +1,1 @@
+No, you have to explictly return the total function.

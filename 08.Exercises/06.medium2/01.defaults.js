@@ -1,0 +1,1 @@
+if the input is undefined, or falsy (0 is a falsy value)

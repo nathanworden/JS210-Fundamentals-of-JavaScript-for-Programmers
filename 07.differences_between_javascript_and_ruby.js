@@ -219,5 +219,6 @@ In Ruby, a negative index counts back from the end of the array.
 
 
 
-
+In JavaScript all functions have an arguments object that is available locally. The arguments object contains an entry for every argument passed to the function.
+In Ruby you need a parameter for each argument passed in, or at lest *args. (Double check about how *args works)
 

@@ -6,5 +6,13 @@ var person = {
     return 'Reyes';
   },
 };
+console.log(person.firstName + ' ' + person.lastName;
+// function () {
+//     return 'Victor';
+//   } function () {
+//     return 'Reyes';
+//   }
 
-console.log(person.firstName + ' ' + person.lastName);
+
+console.log(person.firstName() + ' ' + person.lastName());
+// 'Victor Reyes'

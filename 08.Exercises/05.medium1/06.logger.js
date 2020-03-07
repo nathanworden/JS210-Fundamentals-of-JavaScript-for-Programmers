@@ -1,0 +1,1 @@
+inner scope has access to outer variables
