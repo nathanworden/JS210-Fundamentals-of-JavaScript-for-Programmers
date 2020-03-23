@@ -222,3 +222,13 @@ In Ruby, a negative index counts back from the end of the array.
 In JavaScript all functions have an arguments object that is available locally. The arguments object contains an entry for every argument passed to the function.
 In Ruby you need a parameter for each argument passed in, or at lest *args. (Double check about how *args works)
 
+
+JavaScript doesnt have a set of built in high-order functions for Objects as it does for Arrays. (However, you can use Objects.keys() to work with objects with higher level abstractions.)
+With Ruby, Hashes have iterator functions, and they take two paramerters, one for a key and one for a value. Example:
+hsh = {1 => 'a', 2=> 'b'}
+hsh.each {|key, value| puts "key: #{key}, value: #{value}"}
+//output: 
+// key: 1, value: a
+// key: 2, value: b
+
+
