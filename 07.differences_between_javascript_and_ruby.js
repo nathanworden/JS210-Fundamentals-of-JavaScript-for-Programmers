@@ -60,6 +60,8 @@ In Ruby, #Array.push appends the argument provided to the end of the array and t
 
 In Ruby, the Array#each method performs iteration and returns the original calling object. In JavaScript `forEach` performs iteration and then returns undefined.
 
+In Ruby, you can break out of iterators like each, map, and select. In Javascript, you cant break out of forEach, map, or filter early. They will always iterate over every element. If you need the ability to break out of the loop early, you will need to use a different tool, such as a for loop.
+
 
 In JavaScript you can change an Arrays length property to a new value. If you change it to a smaller value than the current length, the array gets truncated; JavaScript removes all elements beyond the new final element. If you change it to a larger value, the array expands to the new size. The new elements do not get initialized. In Ruby the Array#length method just returns the length of the array, and cannot be set like a property in JavaScript.
 
@@ -230,5 +232,24 @@ hsh.each {|key, value| puts "key: #{key}, value: #{value}"}
 //output: 
 // key: 1, value: a
 // key: 2, value: b
+
+
+In Ruby the Array#concat method is called on an array and takes an array as an argument, like this:
+arr1 = [1, 2, 3]
+arr1.concat([4, 5, 6]) 
+// => [1, 2, 3, 4, 5, 6]
+arr1 is mutated.
+In Javascript concat doesnt mutate the caller; it returns a brand new array
+that contains all the elements from the original array follwed by the elements passed as arguments.
+The arguments can be passed in as an array, as individual elements themselves, like this:
+let arr1 = [1, 2, 3]
+arr1.concat([4, 5, 6]) // [1, 2, 3, 4, 5, 6]
+or
+arr1.concat(4, 5, 6)  // [1, 2, 3, 4, 5, 6]
+Either way, arr1 is NOT mutated as it is in Ruby.
+In Ruby you have to pass in the argument as an array. You cant pass it in as individual elements.
+
+
+
 
 
