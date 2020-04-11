@@ -250,6 +250,6 @@ Either way, arr1 is NOT mutated as it is in Ruby.
 In Ruby you have to pass in the argument as an array. You cant pass it in as individual elements.
 
 
-
+In Javascript the trim() method is like the String#strip method in Ruby. (it removes leading and trailing spaces).
 
 

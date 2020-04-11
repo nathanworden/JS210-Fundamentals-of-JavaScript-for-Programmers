@@ -59,19 +59,42 @@
 // Until the array is a 1 element array, split the array into two
 
 
+// function mergeSort(arr) {
+//   if (arr.length === 1) {return arr}
+//   if (arr.length === 3) {
+//     let two = merge([arr[0]], [arr[1]]);
+//     let one = [arr[2]];
+//     return merge(two, one);
+//   }
+//   let halfLen = Math.floor(arr.length / 2);
+//   let firstHalf = arr.slice(0, halfLen);
+//   let secondHalf = arr.slice(halfLen, arr.length);
+//   return merge(mergeSort(firstHalf), mergeSort(secondHalf));
+// }
+
+//////////////////////////////////////////////////////////////////
+
 function mergeSort(arr) {
+  let subArr1;
+  let subArr2;
+
   if (arr.length === 1) {return arr}
-  let halfLen = Math.floor(arr.length / 2);
-  let firstHalf = arr.slice(0, halfLen);
-  let secondHalf = arr.slice(halfLen, arr.length);
-  console.log(firstHalf);
-  // if (secondHalf.length > firstHalf.length) {
-  //   secondHalf = mergeSort(secondHalf);
-  // }
-  return merge(mergeSort(firstHalf), mergeSort(secondHalf));
+
+  subArr1 = arr.slice(0, arr.length / 2);
+  subArr2 = arr.slice(arr.length / 2);
+
+  subArr1 = mergeSort(subArr1);
+  subArr2 = mergeSort(subArr2);
+
+  return merge(subArr1, subArr2);
 }
 
 
+
+    //    [6, 2, 7, 1, 4]
+    //[6, 2]          [7, 1, 4]
+//  [6]   [2]       [7]    [1, 4]
+//                        [1]   [4]
 
 function merge(arr1, arr2) {
   let result = [];
@@ -81,6 +104,7 @@ function merge(arr1, arr2) {
   for (let longerIdx = 0; longerIdx < longer.length; longerIdx += 1) {
     if (longer[longerIdx] <= shorter[shorterIdx]) {
       result.push(longer[longerIdx]);
+      if (longerIdx === longer.length - 1) {result.push(shorter[shorterIdx])}
     } else if (longer[longerIdx] > shorter[shorterIdx]) {
       result.push(shorter[shorterIdx]);
       longerIdx -= 1;
@@ -89,16 +113,58 @@ function merge(arr1, arr2) {
       result.push(longer[longerIdx])
     }
   }
+  
+    while (shorter[shorterIdx + 1] !== undefined) {
+      result.push(shorter[shorterIdx + 1]);
+      shorterIdx += 1;
+    }
 
-  // console.log(result);
+
   return result;
 }
 
-// console.log(mergeSort([9, 5, 7, 1]));           // [1, 5, 7, 9]
-// console.log(mergeSort([5, 3]));                 // [3, 5]
+console.log(mergeSort([9, 5, 7, 1]));           // [1, 5, 7, 9]
+console.log(mergeSort([5, 3]));                 // [3, 5]
 console.log(mergeSort([6, 2, 7, 1, 4]));        // [1, 2, 4, 6, 7]
-// console.log(mergeSort(['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie']));
+console.log(mergeSort(['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie']));
 // // // // ["Alice", "Bonnie", "Kim", "Pete", "Rachel", "Sue", "Tyler"]
-// console.log(mergeSort([7, 3, 9, 15, 23, 1, 6, 51, 22, 37, 54, 43, 5, 25, 35, 18, 46]));
+console.log(mergeSort([7, 3, 9, 15, 23, 1, 6, 51, 22, 37, 54, 43, 5, 25, 35, 18, 46]));
 // [1, 3, 5, 6, 7, 9, 15, 18, 22, 23, 25, 35, 37, 43, 46, 51, 54]
+
+
+
+
+
+
+///////
+// Becaue of the way the book had implemented merge, it worked. I had pretty much the same merge sort function, but it didnt work the same way because my merge function was implemented differently.
+
+// function mergeSort(array) {
+//   var subArray1;
+//   var subArray2;
+
+//   if (array.length === 1) {
+//     return array;
+//   }
+
+//   subArray1 = array.slice(0, array.length / 2);
+//   subArray2 = array.slice(array.length / 2);
+
+//   subArray1 = mergeSort(subArray1);
+//   subArray2 = mergeSort(subArray2);
+
+//   return merge(subArray1, subArray2);
+// }
+
+// function merge(array1, array2) {
+//   var copy1 = array1.slice();
+//   var copy2 = array2.slice();
+//   var result = [];
+
+//   while (copy1.length > 0 && copy2.length > 0) {
+//     result.push(copy1[0] <= copy2[0] ? copy1.shift() : copy2.shift());
+//   }
+
+//   return result.concat(copy1.length === 0 ? copy2 : copy1);
+// }
 
